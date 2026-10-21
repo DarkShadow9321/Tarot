@@ -1,0 +1,16 @@
+@model TarotCard
+@{ ViewData["Title"] = Model.Id == 0 ? "新增牌卡" : "編輯牌卡"; }
+<section class="section-heading"><span class="eyebrow">✧ CARD EDITOR</span><h1>@ViewData["Title"]</h1></section>
+<form asp-action="Save" method="post" class="panel form-panel admin-form">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All" class="validation"></div>
+    <label asp-for="Name">中文牌名</label><input asp-for="Name" maxlength="80" />
+    <label asp-for="EnglishName">英文牌名</label><input asp-for="EnglishName" maxlength="80" />
+    <label asp-for="Arcana">分類（Major / Minor）</label><input asp-for="Arcana" maxlength="20" />
+    <label asp-for="Suit">花色</label><input asp-for="Suit" maxlength="30" />
+    <label asp-for="SortOrder">排序編號（唯一）</label><input asp-for="SortOrder" type="number" />
+    <label asp-for="Symbol">牌面符號</label><input asp-for="Symbol" maxlength="12" />
+    <label asp-for="UprightMeaning">正位解釋</label><textarea asp-for="UprightMeaning" rows="3" maxlength="500"></textarea>
+    <label asp-for="ReversedMeaning">逆位解釋</label><textarea asp-for="ReversedMeaning" rows="3" maxlength="500"></textarea>
+    <div class="actions"><button class="btn primary" type="submit">儲存牌卡</button><a class="btn outline" asp-action="Index">返回管理</a></div>
+</form>

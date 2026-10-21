@@ -1,0 +1,13 @@
+@{ ViewData["Title"] = "首頁"; }
+<section class="hero">
+    <div class="eyebrow">✦ DISCOVER YOUR INNER UNIVERSE ✦</div>
+    <h1>在星光之間，<br /><em>遇見下一個答案</em></h1>
+    <p class="lead">給自己一段安靜的時間，提出問題，抽取一張或三張塔羅牌。每一次占卜都會儲存在本機 SQL Server，讓你回看自己的探索歷程。</p>
+    <div class="actions"><a class="btn primary" asp-controller="Tarot" asp-action="Draw">開始抽牌　↗</a><a class="btn outline" asp-controller="History" asp-action="Index">觀看歷史紀錄</a></div>
+    <div class="hero-orb" aria-hidden="true"><div class="moon">☾</div><div class="orbit">✧ &nbsp; ✶ &nbsp; ✧ &nbsp; ✶</div></div>
+</section>
+<section class="feature-grid">
+    <article class="feature"><span>01 / EXPLORE</span><h2>專屬提問</h2><p>寫下心中的疑惑，為你的占卜設定焦點。</p></article>
+    <article class="feature"><span>02 / DISCOVER</span><h2>一張或三張</h2><p>由 C# 後端獨立洗牌，產生不重複的抽牌結果。</p></article>
+    <article class="feature"><span>03 / REFLECT</span><h2>回顧紀錄</h2><p>儲存到 SQL Server，隨時重新查看牌義與提問。</p></article>
+</section>

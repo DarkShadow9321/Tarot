@@ -1,0 +1,7 @@
+@model IReadOnlyList<TarotCard>
+@{ ViewData["Title"] = "牌卡管理"; }
+<section class="section-heading"><span class="eyebrow">✧ LOCAL DEMO / CARD MANAGEMENT</span><h1>塔羅牌資料管理</h1><p>目前共 @Model.Count 張牌。此頁無帳號驗證，僅供本機練習；部署前必須新增驗證與授權。</p></section>
+<div class="actions"><a class="btn primary" asp-action="Create">＋ 新增牌卡</a></div>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>序號</th><th>牌名</th><th>牌組</th><th>操作</th></tr></thead><tbody>
+@foreach (var card in Model) { <tr><td>@card.SortOrder</td><td>@card.Symbol　@card.Name <small>@card.EnglishName</small></td><td>@card.Suit</td><td><div class="history-actions"><a asp-action="Edit" asp-route-id="@card.Id" class="btn outline small">編輯</a><form asp-action="Delete" method="post" data-confirm="確定刪除此牌卡？已有歷史紀錄的牌無法刪除。"><input type="hidden" name="id" value="@card.Id"/><button type="submit" class="btn danger small">刪除</button></form></div></td></tr> }
+</tbody></table></div>

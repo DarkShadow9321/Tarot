@@ -1,0 +1,17 @@
+@model DrawForm
+@{ ViewData["Title"] = "開始占卜"; }
+<section class="section-heading"><span class="eyebrow">✧ YOUR READING</span><h1>靜下心來，提出問題</h1><p>選擇抽牌方式。由後端抽牌並決定正逆位。</p></section>
+<form asp-controller="Tarot" asp-action="Draw" method="post" class="panel form-panel">
+    <div asp-validation-summary="ModelOnly" class="validation"></div>
+    <label asp-for="Question">想詢問的事情</label>
+    <textarea asp-for="Question" rows="4" maxlength="200" placeholder="例如：我應該如何面對目前的職涯選擇？"></textarea>
+    <span asp-validation-for="Question" class="validation"></span>
+    <label>抽牌方式</label>
+    <div class="choice-row">
+        <label class="choice"><input type="radio" asp-for="DrawCount" value="1" /> <strong>一張牌</strong><span>給當下的提醒</span></label>
+        <label class="choice"><input type="radio" asp-for="DrawCount" value="3" /> <strong>三張牌</strong><span>過去・現在・未來</span></label>
+    </div>
+    <span asp-validation-for="DrawCount" class="validation"></span>
+    <button type="submit" class="btn primary submit">✦ 洗牌並揭示結果</button>
+    <p class="hint">占卜結果是隨機生成的象徵性解讀，不應作為重大決策的唯一依據。</p>
+</form>

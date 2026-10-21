@@ -1,0 +1,18 @@
+@model TarotReading
+@{ ViewData["Title"] = "占卜結果"; var cards = Model.Cards.OrderBy(c => c.Position).ToList(); var positions = Model.DrawCount == 3 ? new[] { "過去", "現在", "未來" } : new[] { "當下指引" }; }
+<section class="section-heading"><span class="eyebrow">✧ YOUR READING RESULT</span><h1>宇宙捎來的訊息</h1><p class="question-quote">「@Model.Question」</p><p class="meta">占卜編號 #@Model.Id · @Model.CreatedAtUtc.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</p></section>
+<div class="reading-grid">
+@for (var i = 0; i < cards.Count; i++)
+{
+    var item = cards[i];
+    <article class="result-card">
+        <div class="position">@(positions[i]) · 第 @(i+1) 張</div>
+        <div class="tarot-art @(item.IsReversed ? "reversed" : "")">
+            <div class="art-corner">✦</div><div class="art-symbol">@item.TarotCard.Symbol</div><div class="art-name">@item.TarotCard.EnglishName</div><div class="art-corner bottom">✦</div>
+        </div>
+        <h2>@item.TarotCard.Name</h2><div class="orientation">@(item.IsReversed ? "↧ 逆位" : "↑ 正位")</div>
+        <p>@(item.IsReversed ? item.TarotCard.ReversedMeaning : item.TarotCard.UprightMeaning)</p>
+    </article>
+}
+</div>
+<div class="actions center"><a class="btn primary" asp-controller="Tarot" asp-action="Draw">再次占卜</a><a class="btn outline" asp-controller="History" asp-action="Index">查看歷史紀錄</a></div>
